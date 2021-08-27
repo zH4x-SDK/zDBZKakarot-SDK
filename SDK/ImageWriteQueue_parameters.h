@@ -1,14 +1,19 @@
-#pragma once
+﻿#pragma once
 
-#include "../SDK.h"
+// Name: DBZ-Kakarot, Version: 4.21.2
 
-// Name: DBZKakarot, Version: 1.0.3
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Parameters
@@ -17,7 +22,9 @@ namespace SDK
 // Function ImageWriteQueue.ImageWriteBlueprintLibrary.ExportToDisk
 struct UImageWriteBlueprintLibrary_ExportToDisk_Params
 {
-	class UTexture*                                    Texture;                                                  // (Parm, ZeroConstructor, IsPlainOldData)
+	class UTexture*                                    Texture;                                                   // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FString                                     Filename;                                                  // (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FImageWriteOptions                          Options;                                                   // (ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
 
 }

@@ -1,23 +1,31 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class MaterialShaderQualitySettings.MaterialShaderQualitySettings
-// 0x0050 (0x0078 - 0x0028)
+// 0x0050 (FullSize[0x0078] - InheritedSize[0x0028])
 class UMaterialShaderQualitySettings : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x50];                                      // 0x0028(0x0050) MISSED OFFSET
+	TMap<struct FName, class UShaderPlatformQualitySettings*> ForwardSettingMap;                                         // 0x0028(0x0050) (ZeroConstructor, NativeAccessSpecifierPrivate)
+
 
 	static UClass* StaticClass()
 	{
@@ -25,15 +33,18 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class MaterialShaderQualitySettings.ShaderPlatformQualitySettings
-// 0x0028 (0x0050 - 0x0028)
+// 0x0028 (FullSize[0x0050] - InheritedSize[0x0028])
 class UShaderPlatformQualitySettings : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x28];                                      // 0x0028(0x0028) MISSED OFFSET
+	struct FMaterialQualityOverrides                   QualityOverrides[0x3];                                     // 0x0028(0x0018) (Edit, Config, NoDestructor, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_71WJ[0x10];                                    // 0x0040(0x0010) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -41,8 +52,9 @@ public:
 		return ptr;
 	}
 
-};
 
+
+};
 
 }
 

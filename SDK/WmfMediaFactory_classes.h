@@ -1,23 +1,34 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class WmfMediaFactory.WmfMediaSettings
-// 0x0008 (0x0030 - 0x0028)
+// 0x0008 (FullSize[0x0030] - InheritedSize[0x0028])
 class UWmfMediaSettings : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) MISSED OFFSET
+	bool                                               AllowNonStandardCodecs;                                    // 0x0028(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               LowLatency;                                                // 0x0029(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               NativeAudioOut;                                            // 0x002A(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_QNDR[0x5];                                     // 0x002B(0x0005) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -25,8 +36,9 @@ public:
 		return ptr;
 	}
 
-};
 
+
+};
 
 }
 

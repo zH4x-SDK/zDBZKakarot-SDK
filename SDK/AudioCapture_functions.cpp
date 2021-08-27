@@ -1,13 +1,18 @@
+﻿// Name: DBZ-Kakarot, Version: 4.21.2
 
-#include "../SDK.h"
+#include "../pch.h"
 
-// Name: DBZKakarot, Version: 1.0.3
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Functions

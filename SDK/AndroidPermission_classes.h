@@ -1,23 +1,32 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class AndroidPermission.AndroidPermissionCallbackProxy
-// 0x0020 (0x0048 - 0x0028)
+// 0x0020 (FullSize[0x0048] - InheritedSize[0x0028])
 class UAndroidPermissionCallbackProxy : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x20];                                      // 0x0028(0x0020) MISSED OFFSET
+	struct FScriptMulticastDelegate                    OnPermissionsGrantedDynamicDelegate;                       // 0x0028(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_FKXM[0x10];                                    // 0x0038(0x0010) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -25,14 +34,16 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class AndroidPermission.AndroidPermissionFunctionLibrary
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UAndroidPermissionFunctionLibrary : public UBlueprintFunctionLibrary
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -41,10 +52,10 @@ public:
 	}
 
 
-	void STATIC_CheckPermission();
-	void STATIC_AcquirePermissions();
-};
 
+	bool STATIC_CheckPermission(const struct FString& permission);
+	class UAndroidPermissionCallbackProxy* STATIC_AcquirePermissions(TArray<struct FString> Permissions);
+};
 
 }
 

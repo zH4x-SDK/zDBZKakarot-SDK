@@ -1,22 +1,30 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class OnlineSubsystemSteam.SteamAuthComponentModuleInterface
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class USteamAuthComponentModuleInterface : public UHandlerComponentFactory
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -24,15 +32,18 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class OnlineSubsystemSteam.SteamNetConnection
-// 0x0008 (0x1980 - 0x1978)
+// 0x0008 (FullSize[0x1980] - InheritedSize[0x1978])
 class USteamNetConnection : public UIpConnection
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x1978(0x0008) MISSED OFFSET
+	bool                                               bIsPassthrough;                                            // 0x1978(0x0001) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_BCW5[0x7];                                     // 0x1979(0x0007) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -40,15 +51,17 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class OnlineSubsystemSteam.SteamNetDriver
-// 0x0008 (0x06E0 - 0x06D8)
+// 0x0008 (FullSize[0x06E0] - InheritedSize[0x06D8])
 class USteamNetDriver : public UIpNetDriver
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x06D8(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData_ECBL[0x8];                                     // 0x06D8(0x0008) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -56,8 +69,9 @@ public:
 		return ptr;
 	}
 
-};
 
+
+};
 
 }
 

@@ -1,14 +1,19 @@
-#pragma once
+﻿#pragma once
 
-#include "../SDK.h"
+// Name: DBZ-Kakarot, Version: 4.21.2
 
-// Name: DBZKakarot, Version: 1.0.3
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Parameters
@@ -17,11 +22,14 @@ namespace SDK
 // Function OnlineSubsystem.TurnBasedMatchInterface.OnMatchReceivedTurn
 struct UTurnBasedMatchInterface_OnMatchReceivedTurn_Params
 {
+	struct FString                                     Match;                                                     // (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               bDidBecomeActive;                                          // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 
 // Function OnlineSubsystem.TurnBasedMatchInterface.OnMatchEnded
 struct UTurnBasedMatchInterface_OnMatchEnded_Params
 {
+	struct FString                                     Match;                                                     // (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 
 }

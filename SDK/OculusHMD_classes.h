@@ -1,22 +1,30 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class OculusHMD.OculusFunctionLibrary
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UOculusFunctionLibrary : public UBlueprintFunctionLibrary
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -25,56 +33,59 @@ public:
 	}
 
 
+
 	void STATIC_ShowLoadingSplashScreen();
 	void STATIC_ShowLoadingIcon(class UTexture2D* Texture);
-	void STATIC_SetTiledMultiresLevel( Level);
-	void STATIC_SetReorientHMDOnControllerRecenter();
-	void STATIC_SetPositionScale3D();
-	void STATIC_SetLoadingSplashParams();
-	void STATIC_SetGuardianVisibility();
-	void STATIC_SetDisplayFrequency();
-	void STATIC_SetCPUAndGPULevels();
-	void STATIC_SetBaseRotationAndPositionOffset();
-	void STATIC_SetBaseRotationAndBaseOffsetInMeters(const struct FRotator& Rotation);
-	void STATIC_IsLoadingIconEnabled();
-	void STATIC_IsGuardianDisplayed();
-	void STATIC_IsDeviceTracked( DeviceType);
-	void STATIC_IsAutoLoadingSplashScreenEnabled();
-	void STATIC_HideLoadingSplashScreen();
+	void STATIC_SetTiledMultiresLevel(OculusHMD_ETiledMultiResLevel Level);
+	void STATIC_SetReorientHMDOnControllerRecenter(bool recenterMode);
+	void STATIC_SetPositionScale3D(const struct FVector& PosScale3D);
+	void STATIC_SetLoadingSplashParams(const struct FString& TexturePath, const struct FVector& DistanceInMeters, const struct FVector2D& SizeInMeters, const struct FVector& RotationAxis, float RotationDeltaInDeg);
+	void STATIC_SetGuardianVisibility(bool GuardianVisible);
+	void STATIC_SetDisplayFrequency(float RequestedFrequency);
+	void STATIC_SetCPUAndGPULevels(int CPULevel, int GPULevel);
+	void STATIC_SetBaseRotationAndPositionOffset(const struct FRotator& BaseRot, const struct FVector& PosOffset, TEnumAsByte<HeadMountedDisplay_EOrientPositionSelector> Options);
+	void STATIC_SetBaseRotationAndBaseOffsetInMeters(const struct FRotator& Rotation, const struct FVector& BaseOffsetInMeters, TEnumAsByte<HeadMountedDisplay_EOrientPositionSelector> Options);
+	bool STATIC_IsLoadingIconEnabled();
+	bool STATIC_IsGuardianDisplayed();
+	bool STATIC_IsDeviceTracked(OculusHMD_ETrackedDeviceType DeviceType);
+	bool STATIC_IsAutoLoadingSplashScreenEnabled();
+	void STATIC_HideLoadingSplashScreen(bool bClear);
 	void STATIC_HideLoadingIcon();
-	void STATIC_HasSystemOverlayPresent();
-	void STATIC_HasInputFocus();
-	void STATIC_GetUserProfile();
-	void STATIC_GetTiledMultiresLevel();
-	void STATIC_GetRawSensorData();
-	void STATIC_GetPose();
-	void STATIC_GetPointGuardianIntersection(const struct FVector& Point);
-	void STATIC_GetPlayAreaTransform();
-	void STATIC_GetNodeGuardianIntersection( DeviceType);
-	void STATIC_GetLoadingSplashParams();
-	void STATIC_GetGuardianPoints();
-	void STATIC_GetGuardianDimensions();
-	void STATIC_GetGPUUtilization();
-	void STATIC_GetGPUFrameTime();
-	void STATIC_GetDeviceName();
-	void STATIC_GetCurrentDisplayFrequency();
-	void STATIC_GetBaseRotationAndPositionOffset();
-	void STATIC_GetBaseRotationAndBaseOffsetInMeters();
-	void STATIC_GetAvailableDisplayFrequencies();
-	void STATIC_EnablePositionTracking();
-	void STATIC_EnableOrientationTracking();
-	void STATIC_EnableAutoLoadingSplashScreen();
+	bool STATIC_HasSystemOverlayPresent();
+	bool STATIC_HasInputFocus();
+	bool STATIC_GetUserProfile(struct FHmdUserProfile* Profile);
+	OculusHMD_ETiledMultiResLevel STATIC_GetTiledMultiresLevel();
+	void STATIC_GetRawSensorData(struct FVector* AngularAcceleration, struct FVector* LinearAcceleration, struct FVector* AngularVelocity, struct FVector* LinearVelocity, float* TimeInSeconds, OculusHMD_ETrackedDeviceType DeviceType);
+	void STATIC_GetPose(struct FRotator* DeviceRotation, struct FVector* DevicePosition, struct FVector* NeckPosition, bool bUseOrienationForPlayerCamera, bool bUsePositionForPlayerCamera, const struct FVector& PositionScale);
+	struct FGuardianTestResult STATIC_GetPointGuardianIntersection(const struct FVector& Point, OculusHMD_EBoundaryType BoundaryType);
+	struct FTransform STATIC_GetPlayAreaTransform();
+	struct FGuardianTestResult STATIC_GetNodeGuardianIntersection(OculusHMD_ETrackedDeviceType DeviceType, OculusHMD_EBoundaryType BoundaryType);
+	void STATIC_GetLoadingSplashParams(struct FString* TexturePath, struct FVector* DistanceInMeters, struct FVector2D* SizeInMeters, struct FVector* RotationAxis, float* RotationDeltaInDeg);
+	TArray<struct FVector> STATIC_GetGuardianPoints(OculusHMD_EBoundaryType BoundaryType);
+	struct FVector STATIC_GetGuardianDimensions(OculusHMD_EBoundaryType BoundaryType);
+	void STATIC_GetGPUUtilization(bool* IsGPUAvailable, float* GPUUtilization);
+	float STATIC_GetGPUFrameTime();
+	struct FString STATIC_GetDeviceName();
+	float STATIC_GetCurrentDisplayFrequency();
+	void STATIC_GetBaseRotationAndPositionOffset(struct FRotator* OutRot, struct FVector* OutPosOffset);
+	void STATIC_GetBaseRotationAndBaseOffsetInMeters(struct FRotator* OutRotation, struct FVector* OutBaseOffsetInMeters);
+	TArray<float> STATIC_GetAvailableDisplayFrequencies();
+	void STATIC_EnablePositionTracking(bool bPositionTracking);
+	void STATIC_EnableOrientationTracking(bool bOrientationTracking);
+	void STATIC_EnableAutoLoadingSplashScreen(bool bAutoShowEnabled);
 	void STATIC_ClearLoadingSplashScreens();
-	void STATIC_AddLoadingSplashScreen(class UTexture2D* Texture);
+	void STATIC_AddLoadingSplashScreen(class UTexture2D* Texture, const struct FVector& TranslationInMeters, const struct FRotator& Rotation, const struct FVector2D& SizeInMeters, const struct FRotator& DeltaRotation, bool bClearBeforeAdd);
 };
 
-
 // Class OculusHMD.OculusHMDRuntimeSettings
-// 0x0018 (0x0040 - 0x0028)
+// 0x0018 (FullSize[0x0040] - InheritedSize[0x0028])
 class UOculusHMDRuntimeSettings : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x18];                                      // 0x0028(0x0018) MISSED OFFSET
+	bool                                               bAutoEnabled;                                              // 0x0028(0x0001) (Edit, ZeroConstructor, Config, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_12WZ[0x7];                                     // 0x0029(0x0007) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	TArray<struct FOculusSplashDesc>                   SplashDescs;                                               // 0x0030(0x0010) (Edit, ZeroConstructor, Config, NativeAccessSpecifierPublic)
+
 
 	static UClass* StaticClass()
 	{
@@ -82,15 +93,19 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class OculusHMD.OculusSceneCaptureCubemap
-// 0x0068 (0x0090 - 0x0028)
+// 0x0068 (FullSize[0x0090] - InheritedSize[0x0028])
 class UOculusSceneCaptureCubemap : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x68];                                      // 0x0028(0x0068) MISSED OFFSET
+	unsigned char                                      UnknownData_VGBC[0x10];                                    // 0x0028(0x0010) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	TArray<class USceneCaptureComponent2D*>            CaptureComponents;                                         // 0x0038(0x0010) (ExportObject, ZeroConstructor, ContainsInstancedReference, NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData_F31Z[0x48];                                    // 0x0048(0x0048) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -98,8 +113,9 @@ public:
 		return ptr;
 	}
 
-};
 
+
+};
 
 }
 

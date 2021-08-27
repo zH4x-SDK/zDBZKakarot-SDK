@@ -1,22 +1,76 @@
-#pragma once
+﻿#pragma once
 
-#include "../SDK.h"
+// Name: DBZ-Kakarot, Version: 4.21.2
 
-// Name: DBZKakarot, Version: 1.0.3
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Parameters
 //---------------------------------------------------------------------------
 
+// Function ATExt.ATCharacterCpl030.OnChangeAction
+struct AATCharacterCpl030_OnChangeAction_Params
+{
+	class AAT_Character*                               InCharacter;                                               // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int                                                InActionIdPrev;                                            // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int                                                InActionIdNext;                                            // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+
+// Function ATExt.ATCharacterCpl040.OnChangeAction
+struct AATCharacterCpl040_OnChangeAction_Params
+{
+	class AAT_Character*                               InCharacter;                                               // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int                                                InActionIdPrev;                                            // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int                                                InActionIdNext;                                            // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+
+// Function ATExt.ATCommunityManager.OnSaveData
+struct UATCommunityManager_OnSaveData_Params
+{
+};
+
+// Function ATExt.ATCommunityManager.OnLoadData
+struct UATCommunityManager_OnLoadData_Params
+{
+	bool                                               bIsSuccess;                                                // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+
+// Function ATExt.ATCommunityManager.OnAutoSaveData
+struct UATCommunityManager_OnAutoSaveData_Params
+{
+};
+
+// Function ATExt.ATCommunityManager.CTExec
+struct UATCommunityManager_CTExec_Params
+{
+	int                                                InTestCase;                                                // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FName                                       testId;                                                    // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+
+// Function ATExt.ATTalkAnimLoader.CompleteLoad
+struct UATTalkAnimLoader_CompleteLoad_Params
+{
+	class UATDataAssetTalkAnimAsyncLoad*               loader;                                                    // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+
 // Function ATExt.ATGeneralBattleDirectionPhase.OnDemoTiming
 struct UATGeneralBattleDirectionPhase_OnDemoTiming_Params
 {
+	AT_EDEMO_TYPE                                      DemoType;                                                  // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	AT_EDEMO_TIMING_TYPE                               DemoTiming;                                                // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FName                                       DemoName;                                                  // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               continueFlag;                                              // (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 
 // Function ATExt.ATGeneralBattleSettlePhase.OnEndWarning
@@ -37,97 +91,17 @@ struct UATGeneralBattleSettlePhase_OnEndBattleHUD_Params
 // Function ATExt.ATLake.Update
 struct AATLake_Update_Params
 {
-	class UPostProcessComponent*                       PostProcessComponent;                                     // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+	class UPostProcessComponent*                       PostProcessComponent;                                      // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStaticMeshComponent*                        LakeMesh;                                                  // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStaticMeshComponent*                        UnderLakeMesh;                                             // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 
 // Function ATExt.ATLake.Init
 struct AATLake_Init_Params
 {
-	class UPostProcessComponent*                       PostProcessComponent;                                     // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneBattleBegin.OnBattleBegin
-struct UATSceneBattleBegin_OnBattleBegin_Params
-{
-};
-
-// Function ATExt.ATSceneBattleEnd.OnEndFinishUI
-struct UATSceneBattleEnd_OnEndFinishUI_Params
-{
-};
-
-// Function ATExt.ATSceneBattleGameOverMenu.OnEndGameOverUI
-struct UATSceneBattleGameOverMenu_OnEndGameOverUI_Params
-{
-};
-
-// Function ATExt.ATSceneBattleMain.OnBattleGameOverStart
-struct UATSceneBattleMain_OnBattleGameOverStart_Params
-{
-};
-
-// Function ATExt.ATSceneBattleMain.OnBattleEnd
-struct UATSceneBattleMain_OnBattleEnd_Params
-{
-};
-
-// Function ATExt.ATSceneDemoBase.OnDemoTiming
-struct UATSceneDemoBase_OnDemoTiming_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneFree.OnQuestPhaseBegin
-struct UATSceneFree_OnQuestPhaseBegin_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneFree.OnQuestEventBegin
-struct UATSceneFree_OnQuestEventBegin_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneFree.OnDemoTiming
-struct UATSceneFree_OnDemoTiming_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneFreeLoadBase.OnQuestEventBegin
-struct UATSceneFreeLoadBase_OnQuestEventBegin_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneEvent.OnQuestPhaseBegin
-struct UATSceneEvent_OnQuestPhaseBegin_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneEvent.OnQuestEventEnd
-struct UATSceneEvent_OnQuestEventEnd_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneEvent.OnDemoTiming
-struct UATSceneEvent_OnDemoTiming_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneGeneralTalk.OnQuestPhaseEnd
-struct UATSceneGeneralTalk_OnQuestPhaseEnd_Params
-{
-	                                                   Type;                                                     // (Parm, ZeroConstructor, IsPlainOldData)
-};
-
-// Function ATExt.ATSceneTrialClear.OnEndFinishUI
-struct UATSceneTrialClear_OnEndFinishUI_Params
-{
+	class UPostProcessComponent*                       PostProcessComponent;                                      // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStaticMeshComponent*                        LakeMesh;                                                  // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UStaticMeshComponent*                        UnderLakeMesh;                                             // (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 
 }

@@ -1,43 +1,60 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionData
-// 0x0030
-struct FClothCollisionData
+// ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_SphereConnection
+// 0x0008
+struct FClothCollisionPrim_SphereConnection
 {
-	unsigned char                                      UnknownData00[0x30];                                      // 0x0000(0x0030) MISSED OFFSET
+	int                                                SphereIndices[0x2];                                        // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
 };
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Convex
 // 0x0018
 struct FClothCollisionPrim_Convex
 {
-	unsigned char                                      UnknownData00[0x18];                                      // 0x0000(0x0018) MISSED OFFSET
-};
+	TArray<struct FPlane>                              Planes;                                                    // 0x0000(0x0010) (ZeroConstructor, NativeAccessSpecifierPublic)
+	int                                                BoneIndex;                                                 // 0x0010(0x0004) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_APML[0x4];                                     // 0x0014(0x0004) MISSED OFFSET (PADDING)
 
-// ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_SphereConnection
-// 0x0008
-struct FClothCollisionPrim_SphereConnection
-{
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) MISSED OFFSET
 };
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Sphere
 // 0x0014
 struct FClothCollisionPrim_Sphere
 {
-	unsigned char                                      UnknownData00[0x14];                                      // 0x0000(0x0014) MISSED OFFSET
+	int                                                BoneIndex;                                                 // 0x0000(0x0004) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                              Radius;                                                    // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                     LocalPosition;                                             // 0x0008(0x000C) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+};
+
+// ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionData
+// 0x0030
+struct FClothCollisionData
+{
+	TArray<struct FClothCollisionPrim_Sphere>          Spheres;                                                   // 0x0000(0x0010) (Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FClothCollisionPrim_SphereConnection> SphereConnections;                                         // 0x0010(0x0010) (Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FClothCollisionPrim_Convex>          Convexes;                                                  // 0x0020(0x0010) (Edit, ZeroConstructor, NativeAccessSpecifierPublic)
+
 };
 
 }

@@ -1,22 +1,30 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class EyeTracker.EyeTrackerFunctionLibrary
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UEyeTrackerFunctionLibrary : public UBlueprintFunctionLibrary
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -25,13 +33,13 @@ public:
 	}
 
 
-	void STATIC_SetEyeTrackedPlayer(class APlayerController* PlayerController);
-	void STATIC_IsStereoGazeDataAvailable();
-	void STATIC_IsEyeTrackerConnected();
-	void STATIC_GetStereoGazeData();
-	void STATIC_GetGazeData();
-};
 
+	void STATIC_SetEyeTrackedPlayer(class APlayerController* PlayerController);
+	bool STATIC_IsStereoGazeDataAvailable();
+	bool STATIC_IsEyeTrackerConnected();
+	bool STATIC_GetStereoGazeData(struct FEyeTrackerStereoGazeData* OutGazeData);
+	bool STATIC_GetGazeData(struct FEyeTrackerGazeData* OutGazeData);
+};
 
 }
 

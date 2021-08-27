@@ -1,13 +1,18 @@
+﻿// Name: DBZ-Kakarot, Version: 4.21.2
 
-#include "../SDK.h"
+#include "../pch.h"
 
-// Name: DBZKakarot, Version: 1.0.3
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Functions
@@ -66,18 +71,20 @@ bool UObject::IsA(UClass* cmp) const
 
 // Function CoreUObject.Object.ExecuteUbergraph
 // (Event, Public, BlueprintEvent)
-
-void UObject::ExecuteUbergraph()
+// Parameters:
+// int                            EntryPoint                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+void UObject::ExecuteUbergraph(int EntryPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function CoreUObject.Object.ExecuteUbergraph");
 
 	UObject_ExecuteUbergraph_Params params;
+	params.EntryPoint = EntryPoint;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
 }
 
 

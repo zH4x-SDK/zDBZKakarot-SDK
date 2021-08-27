@@ -1,13 +1,18 @@
+﻿// Name: DBZ-Kakarot, Version: 4.21.2
 
-#include "../SDK.h"
+#include "../pch.h"
 
-// Name: DBZKakarot, Version: 1.0.3
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Functions
@@ -15,7 +20,6 @@ namespace SDK
 
 // Function MRMesh.MeshReconstructorBase.StopReconstruction
 // (Native, Public, BlueprintCallable)
-
 void UMeshReconstructorBase::StopReconstruction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.StopReconstruction");
@@ -23,17 +27,16 @@ void UMeshReconstructorBase::StopReconstruction()
 	UMeshReconstructorBase_StopReconstruction_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
 }
 
 
 // Function MRMesh.MeshReconstructorBase.StartReconstruction
 // (Native, Public, BlueprintCallable)
-
 void UMeshReconstructorBase::StartReconstruction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.StartReconstruction");
@@ -41,17 +44,16 @@ void UMeshReconstructorBase::StartReconstruction()
 	UMeshReconstructorBase_StartReconstruction_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
 }
 
 
 // Function MRMesh.MeshReconstructorBase.PauseReconstruction
 // (Native, Public, BlueprintCallable)
-
 void UMeshReconstructorBase::PauseReconstruction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.PauseReconstruction");
@@ -59,53 +61,58 @@ void UMeshReconstructorBase::PauseReconstruction()
 	UMeshReconstructorBase_PauseReconstruction_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
 }
 
 
 // Function MRMesh.MeshReconstructorBase.IsReconstructionStarted
 // (Native, Public, BlueprintCallable, BlueprintPure, Const)
-
-void UMeshReconstructorBase::IsReconstructionStarted()
+// Parameters:
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+bool UMeshReconstructorBase::IsReconstructionStarted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.IsReconstructionStarted");
 
 	UMeshReconstructorBase_IsReconstructionStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
+
+	return params.ReturnValue;
 }
 
 
 // Function MRMesh.MeshReconstructorBase.IsReconstructionPaused
 // (Native, Public, BlueprintCallable, BlueprintPure, Const)
-
-void UMeshReconstructorBase::IsReconstructionPaused()
+// Parameters:
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+bool UMeshReconstructorBase::IsReconstructionPaused()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.IsReconstructionPaused");
 
 	UMeshReconstructorBase_IsReconstructionPaused_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
+
+	return params.ReturnValue;
 }
 
 
 // Function MRMesh.MeshReconstructorBase.DisconnectMRMesh
 // (Native, Public)
-
 void UMeshReconstructorBase::DisconnectMRMesh()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.DisconnectMRMesh");
@@ -113,29 +120,86 @@ void UMeshReconstructorBase::DisconnectMRMesh()
 	UMeshReconstructorBase_DisconnectMRMesh_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
 }
 
 
 // Function MRMesh.MeshReconstructorBase.ConnectMRMesh
 // (Native, Public)
-
-void UMeshReconstructorBase::ConnectMRMesh()
+// Parameters:
+// class UMRMeshComponent*        Mesh                           (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+void UMeshReconstructorBase::ConnectMRMesh(class UMRMeshComponent* Mesh)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MeshReconstructorBase.ConnectMRMesh");
 
 	UMeshReconstructorBase_ConnectMRMesh_Params params;
+	params.Mesh = Mesh;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
+	fn->FunctionFlags |= 0x00000400;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
+}
+
+
+// Function MRMesh.MRMeshComponent.IsConnected
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+bool UMRMeshComponent::IsConnected()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.IsConnected");
+
+	UMRMeshComponent_IsConnected_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x00000400;
+
+	UObject::ProcessEvent(fn, &params);
+	fn->FunctionFlags = flags;
+
+
+	return params.ReturnValue;
+}
+
+
+// Function MRMesh.MRMeshComponent.ForceNavMeshUpdate
+// (Final, Native, Public, BlueprintCallable)
+void UMRMeshComponent::ForceNavMeshUpdate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.ForceNavMeshUpdate");
+
+	UMRMeshComponent_ForceNavMeshUpdate_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x00000400;
+
+	UObject::ProcessEvent(fn, &params);
+	fn->FunctionFlags = flags;
+
+}
+
+
+// Function MRMesh.MRMeshComponent.Clear
+// (Final, Native, Public, BlueprintCallable)
+void UMRMeshComponent::Clear()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function MRMesh.MRMeshComponent.Clear");
+
+	UMRMeshComponent_Clear_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x00000400;
+
+	UObject::ProcessEvent(fn, &params);
+	fn->FunctionFlags = flags;
+
 }
 
 

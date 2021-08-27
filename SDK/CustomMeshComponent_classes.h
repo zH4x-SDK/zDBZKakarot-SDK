@@ -1,23 +1,31 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class CustomMeshComponent.CustomMeshComponent
-// 0x0010 (0x05A0 - 0x0590)
+// 0x0010 (FullSize[0x05A0] - InheritedSize[0x0590])
 class UCustomMeshComponent : public UMeshComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x10];                                      // 0x0590(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData_AQ5C[0x10];                                    // 0x0590(0x0010) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -26,11 +34,11 @@ public:
 	}
 
 
-	void SetCustomMeshTriangles(TArray<struct FCustomMeshTriangle> Triangles);
+
+	bool SetCustomMeshTriangles(TArray<struct FCustomMeshTriangle> Triangles);
 	void ClearCustomMeshTriangles();
 	void AddCustomMeshTriangles(TArray<struct FCustomMeshTriangle> Triangles);
 };
-
 
 }
 

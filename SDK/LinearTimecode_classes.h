@@ -1,24 +1,35 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class LinearTimecode.LinearTimecodeComponent
-// 0x0060 (0x02B0 - 0x0250)
+// 0x0068 (FullSize[0x02B0] - InheritedSize[0x0248])
 class ULinearTimecodeComponent : public USceneComponent
 {
 public:
-	struct FDropTimecode                               DropTimecode;                                             // 0x0250(0x001C) (BlueprintVisible, BlueprintReadOnly)
-	unsigned char                                      UnknownData00[0x44];                                      // 0x026C(0x0044) MISSED OFFSET
+	class UMediaPlayer*                                MediaPlayer;                                               // 0x0248(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FDropTimecode                               DropTimecode;                                              // 0x0250(0x001C) (BlueprintVisible, BlueprintReadOnly, NoDestructor, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_NWNT[0x4];                                     // 0x026C(0x0004) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	struct FScriptMulticastDelegate                    OnTimecodeChange;                                          // 0x0270(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_A4C4[0x30];                                    // 0x0280(0x0030) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -26,14 +37,19 @@ public:
 		return ptr;
 	}
 
+
+
+	void STATIC_SetDropTimecodeFrameNumber(const struct FDropTimecode& Timecode, int FrameNumber, struct FDropTimecode* OutTimecode);
+	void STATIC_GetDropTimeCodeFrameNumber(const struct FDropTimecode& Timecode, int* FrameNumber);
+	int GetDropFrameNumber();
 };
 
-
 // Class LinearTimecode.DropTimecodeToStringConversion
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UDropTimecodeToStringConversion : public UBlueprintFunctionLibrary
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -42,9 +58,9 @@ public:
 	}
 
 
-	void STATIC_Conv_DropTimecodeToString();
-};
 
+	struct FString STATIC_Conv_DropTimecodeToString(const struct FDropTimecode& InTimecode);
+};
 
 }
 

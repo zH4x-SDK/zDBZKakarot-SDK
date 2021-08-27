@@ -1,13 +1,35 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
+//---------------------------------------------------------------------------
+// Enums
+//---------------------------------------------------------------------------
+
+// Enum MeshDescription.EComputeNTBsOptions
+enum class MeshDescription_EComputeNTBsOptions : uint8_t
+{
+	EComputeNTBsOptions__None      = 0,
+	EComputeNTBsOptions__Normals   = 1,
+	EComputeNTBsOptions__Tangents  = 2,
+	EComputeNTBsOptions__WeightedNTBs = 3,
+	EComputeNTBsOptions__EComputeNTBsOptions_MAX = 4,
+
+};
+
 //---------------------------------------------------------------------------
 // Script Structs
 //---------------------------------------------------------------------------
@@ -16,7 +38,8 @@ namespace SDK
 // 0x0004
 struct FElementID
 {
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) MISSED OFFSET
+	int                                                IDValue;                                                   // 0x0000(0x0004) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
 };
 
 // ScriptStruct MeshDescription.PolygonGroupID
@@ -58,7 +81,10 @@ struct FVertexInstanceID : public FElementID
 // 0x000C
 struct FMeshTriangle
 {
-	unsigned char                                      UnknownData00[0xC];                                       // 0x0000(0x000C) MISSED OFFSET
+	struct FVertexInstanceID                           VertexInstanceID0;                                         // 0x0000(0x0004) (BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVertexInstanceID                           VertexInstanceID1;                                         // 0x0004(0x0004) (BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVertexInstanceID                           VertexInstanceID2;                                         // 0x0008(0x0004) (BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
 };
 
 }

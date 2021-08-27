@@ -1,13 +1,35 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
+//---------------------------------------------------------------------------
+// Enums
+//---------------------------------------------------------------------------
+
+// Enum ImageWriteQueue.EDesiredImageFormat
+enum class ImageWriteQueue_EDesiredImageFormat : uint8_t
+{
+	EDesiredImageFormat__PNG       = 0,
+	EDesiredImageFormat__JPG       = 1,
+	EDesiredImageFormat__BMP       = 2,
+	EDesiredImageFormat__EXR       = 3,
+	EDesiredImageFormat__EDesiredImageFormat_MAX = 4,
+
+};
+
 //---------------------------------------------------------------------------
 // Script Structs
 //---------------------------------------------------------------------------
@@ -16,8 +38,14 @@ namespace SDK
 // 0x0060
 struct FImageWriteOptions
 {
-	                                                   Format;                                                   // 0x0000(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x5F];                                      // 0x0001(0x005F) MISSED OFFSET
+	ImageWriteQueue_EDesiredImageFormat                Format;                                                    // 0x0000(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_GOEM[0x7];                                     // 0x0001(0x0007) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	struct FScriptDelegate                             OnComplete;                                                // 0x0008(0x0010) (Edit, BlueprintVisible, ZeroConstructor, InstancedReference, NoDestructor, NativeAccessSpecifierPublic)
+	int                                                CompressionQuality;                                        // 0x0018(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               bOverwriteFile;                                            // 0x001C(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                               bAsync;                                                    // 0x001D(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	unsigned char                                      UnknownData_RRW9[0x42];                                    // 0x001E(0x0042) MISSED OFFSET (PADDING)
+
 };
 
 }

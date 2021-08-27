@@ -1,13 +1,18 @@
+﻿// Name: DBZ-Kakarot, Version: 4.21.2
 
-#include "../SDK.h"
+#include "../pch.h"
 
-// Name: DBZKakarot, Version: 1.0.3
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Functions
@@ -15,8 +20,9 @@ namespace SDK
 
 // Function MovieSceneTracks.MovieSceneTransformOrigin.BP_GetTransformOrigin
 // (Event, Protected, HasDefaults, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-
-void UMovieSceneTransformOrigin::BP_GetTransformOrigin()
+// Parameters:
+// struct FTransform              ReturnValue                    (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+struct FTransform UMovieSceneTransformOrigin::BP_GetTransformOrigin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function MovieSceneTracks.MovieSceneTransformOrigin.BP_GetTransformOrigin");
 
@@ -25,8 +31,10 @@ void UMovieSceneTransformOrigin::BP_GetTransformOrigin()
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
-
 	fn->FunctionFlags = flags;
+
+
+	return params.ReturnValue;
 }
 
 

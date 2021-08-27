@@ -1,37 +1,65 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
+//---------------------------------------------------------------------------
+// Enums
+//---------------------------------------------------------------------------
+
+// Enum ActorSequence.EActorSequenceObjectReferenceType
+enum class ActorSequence_EActorSequenceObjectReferenceType : uint8_t
+{
+	EActorSequenceObjectReferenceType__ContextActor = 0,
+	EActorSequenceObjectReferenceType__ExternalActor = 1,
+	EActorSequenceObjectReferenceType__Component = 2,
+	EActorSequenceObjectReferenceType__EActorSequenceObjectReferenceType_MAX = 3,
+
+};
+
 //---------------------------------------------------------------------------
 // Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct ActorSequence.ActorSequenceObjectReferenceMap
-// 0x0020
-struct FActorSequenceObjectReferenceMap
+// ScriptStruct ActorSequence.ActorSequenceObjectReference
+// 0x0028
+struct FActorSequenceObjectReference
 {
-	unsigned char                                      UnknownData00[0x20];                                      // 0x0000(0x0020) MISSED OFFSET
+	ActorSequence_EActorSequenceObjectReferenceType    Type;                                                      // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData_1XX5[0x3];                                     // 0x0001(0x0003) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	struct FGuid                                       ActorId;                                                   // 0x0004(0x0010) (ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData_IA3H[0x4];                                     // 0x0014(0x0004) MISSED OFFSET (FIX SPACE BETWEEN PREVIOUS PROPERTY)
+	struct FString                                     PathToComponent;                                           // 0x0018(0x0010) (ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+
 };
 
 // ScriptStruct ActorSequence.ActorSequenceObjectReferences
 // 0x0010
 struct FActorSequenceObjectReferences
 {
-	unsigned char                                      UnknownData00[0x10];                                      // 0x0000(0x0010) MISSED OFFSET
+	TArray<struct FActorSequenceObjectReference>       Array;                                                     // 0x0000(0x0010) (ZeroConstructor, NativeAccessSpecifierPublic)
+
 };
 
-// ScriptStruct ActorSequence.ActorSequenceObjectReference
-// 0x0028
-struct FActorSequenceObjectReference
+// ScriptStruct ActorSequence.ActorSequenceObjectReferenceMap
+// 0x0020
+struct FActorSequenceObjectReferenceMap
 {
-	                                                   Type;                                                     // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x27];                                      // 0x0001(0x0027) MISSED OFFSET
+	TArray<struct FGuid>                               BindingIds;                                                // 0x0000(0x0010) (ZeroConstructor, NativeAccessSpecifierPrivate)
+	TArray<struct FActorSequenceObjectReferences>      References;                                                // 0x0010(0x0010) (ZeroConstructor, NativeAccessSpecifierPrivate)
+
 };
 
 }

@@ -1,23 +1,31 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class SlateCore.FontBulkData
-// 0x0098 (0x00C0 - 0x0028)
+// 0x0098 (FullSize[0x00C0] - InheritedSize[0x0028])
 class UFontBulkData : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x98];                                      // 0x0028(0x0098) MISSED OFFSET
+	unsigned char                                      UnknownData_72TJ[0x98];                                    // 0x0028(0x0098) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -25,14 +33,16 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.FontFaceInterface
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UFontFaceInterface : public UInterface
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -40,14 +50,16 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.FontProviderInterface
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UFontProviderInterface : public UInterface
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -55,14 +67,16 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.SlateTypes
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class USlateTypes : public UObject
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -70,15 +84,17 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.SlateWidgetStyleAsset
-// 0x0008 (0x0030 - 0x0028)
+// 0x0008 (FullSize[0x0030] - InheritedSize[0x0028])
 class USlateWidgetStyleAsset : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) MISSED OFFSET
+	class USlateWidgetStyleContainerBase*              CustomStyle;                                               // 0x0028(0x0008) (Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
 
 	static UClass* StaticClass()
 	{
@@ -86,15 +102,17 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.SlateWidgetStyleContainerBase
-// 0x0008 (0x0030 - 0x0028)
+// 0x0008 (FullSize[0x0030] - InheritedSize[0x0028])
 class USlateWidgetStyleContainerBase : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData_PDVW[0x8];                                     // 0x0028(0x0008) MISSED OFFSET (PADDING)
+
 
 	static UClass* StaticClass()
 	{
@@ -102,14 +120,16 @@ public:
 		return ptr;
 	}
 
+
+
 };
 
-
 // Class SlateCore.SlateWidgetStyleContainerInterface
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class USlateWidgetStyleContainerInterface : public UInterface
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -117,8 +137,9 @@ public:
 		return ptr;
 	}
 
-};
 
+
+};
 
 }
 

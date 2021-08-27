@@ -1,22 +1,30 @@
-#pragma once
+﻿#pragma once
 
-// Name: DBZKakarot, Version: 1.0.3
+// Name: DBZ-Kakarot, Version: 4.21.2
+
+
+/*!!DEFINE!!*/
+
+/*!!HELPER_DEF!!*/
+
+/*!!HELPER_INC!!*/
 
 #ifdef _MSC_VER
-	#pragma pack(push, 0x8)
+	#pragma pack(push, 0x01)
 #endif
 
-namespace SDK
+namespace CG
 {
 //---------------------------------------------------------------------------
 // Classes
 //---------------------------------------------------------------------------
 
 // Class ImageWriteQueue.ImageWriteBlueprintLibrary
-// 0x0000 (0x0028 - 0x0028)
+// 0x0000 (FullSize[0x0028] - InheritedSize[0x0028])
 class UImageWriteBlueprintLibrary : public UBlueprintFunctionLibrary
 {
 public:
+
 
 	static UClass* StaticClass()
 	{
@@ -25,9 +33,9 @@ public:
 	}
 
 
-	void STATIC_ExportToDisk(class UTexture* Texture);
-};
 
+	void STATIC_ExportToDisk(class UTexture* Texture, const struct FString& Filename, const struct FImageWriteOptions& Options);
+};
 
 }
 
